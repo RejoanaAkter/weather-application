@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import { Inter, Fira_Mono } from "next/font/google";
 import "./globals.css";
 
-// Replace Geist with Inter (sans) and Fira Mono (mono)
+// Specify weights for fonts
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: "400", // default weight
 });
 
 const firaMono = Fira_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: "400", // must specify one of 400, 500, 700
 });
 
 export const metadata: Metadata = {
