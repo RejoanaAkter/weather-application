@@ -3,8 +3,19 @@
 import { useDailyForecastHook } from "@/hooks/useDailyForecast";
 import Image from "next/image";
 
+interface ForecastItem {
+  day: string;
+  icon: string;
+  maxTemp: string | number;
+  minTemp: string | number;
+}
+
 interface Props {
   coords: { lat: number; lon: number } | null;
+}
+
+interface LoadingProps {
+  forecast: ForecastItem[];
 }
 
 export const DisplayForecast = ({ coords }: Props) => {
@@ -47,20 +58,18 @@ export const DisplayForecast = ({ coords }: Props) => {
   );
 };
 
-const DailyForecastLoading = ({ forecast }) => {
+const DailyForecastLoading = ({ forecast }: LoadingProps) => {
   return (
-    <>
-      <div className="mt-6 w-full">
-        <p className="text-gray-200 mb-2">Daily Forecast</p>
-        <div className="grid 2xl:grid-cols-7 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-5 grid-cols-2 w-full gap-2 text-center">
-          {forecast.map((foreCastItem, idx) => (
-            <div
-              key={idx}
-              className="col-span-1 bg-[#36235A] p-4 rounded-lg h-[20vh]"
-            ></div>
-          ))}
-        </div>
+    <div className="mt-6 w-full">
+      <p className="text-gray-200 mb-2">Daily Forecast</p>
+      <div className="grid 2xl:grid-cols-7 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-5 grid-cols-2 w-full gap-2 text-center">
+        {forecast.map((_, idx) => (
+          <div
+            key={idx}
+            className="col-span-1 bg-[#36235A] p-4 rounded-lg h-[20vh]"
+          ></div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
