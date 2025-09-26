@@ -1,7 +1,7 @@
 "use client";
 
 import { useCurrentWeather } from "@/hooks/useCurrentWeather";
-import { FaMapMarkerAlt, FaMapPin } from "react-icons/fa";
+import { FaMapPin } from "react-icons/fa";
 import {
   WiDaySunny,
   WiCloudy,

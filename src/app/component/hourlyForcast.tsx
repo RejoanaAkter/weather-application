@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useHourlyForecasts } from "@/hooks/useHourlyForecast";
+import Image from "next/image";
 
 interface Props {
   coords: { lat: number; lon: number } | null;
@@ -64,10 +65,12 @@ export const HourlyForecast = ({ coords }: Props) => {
           >
             <div className="col-span-3">
               <div className="flex gap-4">
-                <img
+                <Image
                   src={`https://openweathermap.org/img/wn/${hour.icon}@2x.png`}
                   alt={hour.description}
-                  className="w-6 h-6 "
+                  width={48} // Adjust size as needed
+                  height={48}
+                  className="h-6 w-6"
                 />
 
                 <p className="text-xs text-gray-300">

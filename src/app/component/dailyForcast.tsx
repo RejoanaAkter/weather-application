@@ -1,6 +1,7 @@
 "use client";
 
 import { useDailyForecastHook } from "@/hooks/useDailyForecast";
+import Image from "next/image";
 
 interface Props {
   coords: { lat: number; lon: number } | null;
@@ -29,9 +30,11 @@ export const DisplayForecast = ({ coords }: Props) => {
           <div key={idx} className="col-span-1 bg-[#36235A] p-4 rounded-lg">
             <p className="text-sm text-gray-300">{foreCastItem?.day}</p>
             <div className="flex justify-center">
-              <img
+              <Image
                 src={`https://openweathermap.org/img/wn/${foreCastItem?.icon}@2x.png`}
-                alt={foreCastItem?.day}
+                alt={foreCastItem.day}
+                width={48}
+                height={48}
                 className="h-6 w-6"
               />
             </div>
@@ -51,9 +54,10 @@ const DailyForecastLoading = ({ forecast }) => {
         <p className="text-gray-200 mb-2">Daily Forecast</p>
         <div className="grid 2xl:grid-cols-7 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-5 grid-cols-2 w-full gap-2 text-center">
           {forecast.map((foreCastItem, idx) => (
-            <div key={idx} className="col-span-1 bg-[#36235A] p-4 rounded-lg h-[20vh]">
-             
-            </div>
+            <div
+              key={idx}
+              className="col-span-1 bg-[#36235A] p-4 rounded-lg h-[20vh]"
+            ></div>
           ))}
         </div>
       </div>
